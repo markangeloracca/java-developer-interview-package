@@ -8,13 +8,129 @@ Hello, thank you for joining me today. My name is Mark Angelo Racca known as Rea
 4. How do you secure your application?
 5. How do you Implement Authorization and Authentication in your current squad, and/or with your previous experience?
 6. How do you ensure code quality?
+7. How do manage vulnerabilities?
+
 
 Problem-Solving
 
 https://www.linkedin.com/pulse/java-coding-interview-questions-top-10-akcoding-5mw0c/
 
+### 1. FizzBuzz Problem
+Write a program that prints the numbers from 1 to 100. But for multiples of three, print “Fizz” instead of the number, and for the multiples of five, print “Buzz”. For numbers that are multiples of both three and five, print “FizzBuzz”.
+
+Here’s the FizzBuzz problem solved in Java:
+
+``` java
+public class FizzBuzz {
+    public static void main(String[] args) {
+        for (int i = 1; i <= 100; i++) {
+            if (i % 3 == 0 && i % 5 == 0) {
+                System.out.println("FizzBuzz");
+            } else if (i % 3 == 0) {
+                System.out.println("Fizz");
+            } else if (i % 5 == 0) {
+                System.out.println("Buzz");
+            } else {
+                System.out.println(i);
+            }
+        }
+    }
+}
+```
+
+This Java program iterates through numbers from 1 to 100 and prints “Fizz” for multiples of 3, “Buzz” for multiples of 5, and “FizzBuzz” for numbers that are multiples of both 3 and 5. Otherwise, it prints the number itself.
+
+## Anagram
+
+/*
+Problem Statement:
+
+Write a Java program to determine if two given strings are anagrams of each other. 
+An anagram is a word or phrase formed by rearranging the letters of a different word or phrase, 
+typically using all the original letters exactly once.
+
+For example:
+- "listen" and "silent" are anagrams.
+- "triangle" and "integral" are anagrams.
+- "hello" and "world" are not anagrams.
+- "Racecar" and "racecar" are anagrams.
+- "Debit card" and "bad credit" are anagrams, ignoring spaces and case.
+
+Your program should take two strings as input and return true if they are anagrams, and false otherwise.
+*/
+
+``` java
+import java.util.Arrays;
+
+public class AnagramChecker {
+
+    public static boolean areAnagrams(String str1, String str2) {
+        // Remove spaces and convert to lowercase for case-insensitive comparison
+        String cleanedStr1 = str1.replaceAll("\\s", "").toLowerCase();
+        String cleanedStr2 = str2.replaceAll("\\s", "").toLowerCase();
+
+        // Check if the lengths are different, if so, they cannot be anagrams
+        if (cleanedStr1.length() != cleanedStr2.length()) {
+            return false;
+        }
+
+        // Convert strings to character arrays and sort them
+        char[] charArray1 = cleanedStr1.toCharArray();
+        char[] charArray2 = cleanedStr2.toCharArray();
+        Arrays.sort(charArray1);
+        Arrays.sort(charArray2);
+
+        // Compare the sorted character arrays
+        return Arrays.equals(charArray1, charArray2);
+    }
+
+    public static void main(String[] args) {
+        String str1 = "listen";
+        String str2 = "silent";
+        System.out.println("\"" + str1 + "\" and \"" + str2 + "\" are anagrams: " + areAnagrams(str1, str2));
+
+        str1 = "triangle";
+        str2 = "integral";
+        System.out.println("\"" + str1 + "\" and \"" + str2 + "\" are anagrams: " + areAnagrams(str1, str2));
+
+        str1 = "hello";
+        str2 = "world";
+        System.out.println("\"" + str1 + "\" and \"" + str2 + "\" are anagrams: " + areAnagrams(str1, str2));
+
+        str1 = "Racecar";
+        str2 = "racecar";
+        System.out.println("\"" + str1 + "\" and \"" + str2 + "\" are anagrams: " + areAnagrams(str1, str2));
+
+        str1 = "Debit card";
+        str2 = "bad credit";
+        System.out.println("\"" + str1 + "\" and \"" + str2 + "\" are anagrams: " + areAnagrams(str1, str2));
+    }
+}
+```
+
+Explanation:
+
+areAnagrams(String str1, String str2) Function:
+
+Takes two strings (str1 and str2) as input.
+Cleaning:
+str1.replaceAll("\\s", "").toLowerCase(): Removes all whitespace characters (spaces, tabs, etc.) and converts the string to lowercase. This ensures that the comparison is case-insensitive and ignores spaces. The same is done for str2.
+Length Check:
+if (cleanedStr1.length() != cleanedStr2.length()): If the lengths of the cleaned strings are different, they cannot be anagrams, so it returns false.
+Character Array Conversion and Sorting:
+char[] charArray1 = cleanedStr1.toCharArray();: Converts the cleaned string str1 into a character array.
+char[] charArray2 = cleanedStr2.toCharArray();: Converts the cleaned string str2 into a character array.
+Arrays.sort(charArray1);: Sorts the characters in charArray1 in ascending order.
+Arrays.sort(charArray2);: Sorts the characters in charArray2 in ascending order.
+Comparison:
+Arrays.equals(charArray1, charArray2);: Compares the sorted character arrays. If they are equal (meaning they have the same characters in the same quantities), it returns true; otherwise, it returns false.
+main(String[] args) Function:
+
+Provides example usage of the areAnagrams function with various test cases.
+Prints the results to the console.
 
 
+## Application Design
 Alright, here's a senior Java developer interview question designed to elicit a system design discussion, focusing on ordering, payment, and receipt generation:
 
 Question:
